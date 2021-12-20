@@ -3,38 +3,34 @@
 #include<string.h>
 #define WORD 30
 # define TXT 1024
- 
-void main()
-{   
+
+int main(){  
+
 char res [TXT]="";
-char resC [TXT]="";
-char atbsh[WORD]="";
-char resAtbsh[TXT]="";
 char txt[TXT]="";
 char Word[WORD]="";
 int i=-1;
-do{
-   i++;
-   scanf("%c", &Word[i]);
-}while ((Word[i]!=32)&&(Word[i]!='\t')&&(Word[i]!='\n'));
-   int j=-1;
-do{
-    j++;
- scanf("%c", &txt[j]);
-}while ((txt[j]!='~'));
-
-  
+	scanf("%s", Word); 		
+	char c;
+	do{				
+		scanf("%c", &c);
+		if(c == '~'){			
+			txt[i] = '\0';
+			break;
+		}
+		txt[i] = c;		
+		i++;
+	} while(i <= TXT); 		
+	
+    getchar();
     printf("Gematria Sequences: ");
     funcA(txt,Word,res);
     printf("%s\n",res);
-    strcpy(atbsh,Word);
-    AtbshWord(atbsh);
     printf("Atbash Sequences : ");
-    funcB(txt,atbsh,resAtbsh);
-    printf("\n%s",resAtbsh);
+    funcB(txt,Word);
+	printf("\n");
     printf("Anagram Sequences : ");
     funcC(txt,Word);
+	printf("\n");
+    return 0;
 }
-
-
-
